@@ -33,8 +33,16 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        seedUsers();
-        seedProducts();
+        try {
+            seedUsers();
+        } catch (Exception e) {
+            logger.warn("Could not seed users: {}", e.getMessage());
+        }
+        try {
+            seedProducts();
+        } catch (Exception e) {
+            logger.warn("Could not seed products: {}", e.getMessage());
+        }
     }
 
     private void seedUsers() {
