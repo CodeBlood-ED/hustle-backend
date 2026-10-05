@@ -97,13 +97,13 @@ public class SecurityConfig {
                         // Public Auth Endpoints
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         // Legacy Admin endpoints (matches hustle_admin)
-                        .requestMatchers(HttpMethod.POST, "/api/v1/upload_product").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/upload_product").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/v1/get_products").permitAll()
-                        // Public Product Endpoints
+                        // Public Product Endpoints (reads are public, modifications require ADMIN)
                         .requestMatchers(HttpMethod.GET, "/api/v1/products/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/products").permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/api/v1/products/**").permitAll()
-                        .requestMatchers(HttpMethod.DELETE, "/api/v1/products/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/products").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/products/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/products/**").hasRole("ADMIN")
                         // Public Cart Endpoints
                         .requestMatchers("/api/v1/cart/**").permitAll()
                         // Public Order creation & tracking

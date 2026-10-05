@@ -38,29 +38,8 @@ public class DataInitializer implements CommandLineRunner {
     }
 
     private void seedUsers() {
-        if (userRepository.count() == 0) {
-            logger.info("Seeding initial users...");
-
-            User admin = new User(
-                    "Admin User",
-                    "admin@hustle.com",
-                    passwordEncoder.encode("admin123"),
-                    "9876543210",
-                    Role.ROLE_ADMIN
-            );
-            userRepository.save(admin);
-
-            User customer = new User(
-                    "Demo User",
-                    "user@hustle.com",
-                    passwordEncoder.encode("password123"),
-                    "9123456780",
-                    Role.ROLE_USER
-            );
-            userRepository.save(customer);
-
-            logger.info("Default users seeded: admin@hustle.com / admin123, user@hustle.com / password123");
-        }
+        // Admin users can only be signed up by manual script added to Supabase PostgreSQL.
+        logger.info("Admin accounts are restricted to manual database provisioning in Supabase PostgreSQL.");
     }
 
     private void seedProducts() {
