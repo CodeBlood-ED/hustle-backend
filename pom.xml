@@ -88,6 +88,13 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- PostgreSQL Driver for PostgreSQL 18 / hustle-dev database -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
         <!-- DevTools for automatic server restart during development -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
